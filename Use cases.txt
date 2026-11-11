@@ -1,0 +1,108 @@
+UC-01: Register and manage user accounts
+UC-02: Role-based access — Admin (full control) vs Staff (limited to operations)
+UC-03: Secure login with session timeout
+UC-04: Audit log — every action recorded with user name, timestamp, and change made
+UC-05: Financial reports and ledger views restricted to Admin role only
+
+UC-06: Add, edit, deactivate products with: name, SKU, category, unit (box/sack/kg), weight per unit, brand
+UC-07: Categorise products (e.g. Jam, Flour, Sugar, Margarine, Milk Powder)
+UC-08: Support multiple brands per product type (e.g. multiple flour brands)
+UC-09: Set cost price and selling price per product — both editable by admin
+UC-10: Set reorder point per product (minimum stock threshold before alert triggers)
+UC-11: Flag products as expiry-tracked (mandatory for jams; optional for others)
+UC-12: Define purchase unit and selling unit per product with conversion factor (e.g. buy 1 sack = sell 25 kg)
+
+UC-13: View real-time stock levels per product
+UC-14: Record stock-in (goods received from supplier), auto-update stock
+UC-15: Record stock-out (goods dispatched to customer), auto-update stock
+UC-16: Manual stock adjustments with mandatory reason (damaged, miscounted, returned)
+UC-17: Full stock movement history per product (who, when, how much, reason)
+UC-18: Batch and expiry date tracking — especially for jams
+UC-19: FEFO (First Expired, First Out) — system recommends oldest batch to dispatch first
+UC-20: Low stock alert when product hits reorder point
+UC-21: Expiry alert — notify X days before a batch expires (configurable)
+UC-22: Stock take module — team counts physical stock category by category, system compares vs recorded, flags discrepancies
+
+UC-23: Add and manage supplier profiles (name, contact, address, payment terms)
+UC-24: Create Purchase Orders (POs) sent to suppliers
+UC-25: Receive goods against a PO — stock auto-updates on confirmation
+UC-26: Track outstanding and partially fulfilled POs
+UC-27: Record supplier invoices linked to POs
+UC-28: Track supplier payment status — Paid / Unpaid / Partially Paid
+UC-29: Record supplier payments (immediate or credit terms)
+UC-30: Supplier outstanding balance summary (how much is owed to each supplier)
+UC-31: Void or cancel a Purchase Order — reverse any stock impact if goods were already received
+
+UC-32: Add and manage customer profiles (name, contact, address, payment terms)
+UC-33: Create Sales Orders — select customer, add products and quantities
+UC-34: Capture selling price per line item at time of order (price snapshot — immune to future price changes)
+UC-35: Apply Indonesian PPN (11%) tax on Sales Orders — shown as a line item on the invoice
+UC-36: Print Sales Order / Delivery Order formatted for custom-size carbonless copy paper
+UC-37: Mark orders as dispatched — stock auto-deducted
+UC-38: Handle partial deliveries — track remaining quantities
+UC-39: Process customer returns — restock with reason
+UC-40: Track customer payment status — Paid / Unpaid / Partially Paid
+UC-41: Record customer payments (upfront or credit)
+UC-42: Customer outstanding balance summary (how much each customer owes)
+UC-43: Void or cancel a Sales Order — reverse stock deduction if already dispatched
+
+UC-44: Cash/bank ledger — record all money in and money out
+UC-45: Record incoming payments from customers linked to customer name and Sales Order
+UC-46: Record outgoing payments to suppliers linked to supplier name and Purchase Order
+UC-47: Record and categorise non-inventory expenses (utilities, transport, staff costs)
+UC-48: Accounts Receivable — total owed to you by all customers
+UC-49: Accounts Payable — total you owe to all suppliers
+UC-50: Simple Profit and Loss summary — revenue vs expenses over a date range
+UC-51: Daily/monthly cash flow summary
+
+UC-52: Current stock levels report
+UC-53: Stock movement report (date range filter)
+UC-54: Expiring stock report — all batches expiring within X days
+UC-55: Low stock / out-of-stock report
+UC-56: Sales Order history and fulfilment report
+UC-57: Purchase Order history and fulfilment report
+UC-58: Customer outstanding balances report
+UC-59: Supplier outstanding balances report
+UC-60: Profit and Loss report
+UC-61: Expense breakdown report by category
+UC-62: Cash flow report with date range filter
+UC-63: Sales revenue report — total revenue over a date range
+UC-64: Top selling products report — ranked by quantity sold over a period
+UC-65: Top customers report — ranked by order volume or revenue over a period
+UC-66: Slow moving / dead stock report — products with no movement over X days
+UC-67: Export all reports to PDF or Excel
+
+UC-68: Print-ready Delivery Order / Sales Invoice formatted to custom paper size (width x height configurable in mm)
+UC-69: Print-ready Purchase Order for sending to suppliers
+UC-70: Configurable document header (company name, address, logo)
+UC-71: Auto-generated order reference numbers
+
+UC-72: Low stock alert — in-app notification
+UC-73: Expiry warning — configurable days before expiry (e.g. 3 days before for jams)
+UC-74: Overdue customer payment alert
+UC-75: Overdue supplier payment alert
+UC-76: Pending / unfulfilled orders alert
+
+UC-77: Mobile-responsive web interface usable on phones and tablets
+
+UC-78: Default currency set to Indonesian Rupiah (IDR)
+UC-79: Multi-currency architecture built-in — activatable for future expansion without rebuild
+UC-80: Currency settings manageable by admin
+
+UC-81: Import existing product and stock data from Excel/CSV
+UC-82: Full data export for backup
+UC-83: System settings — company name, logo, address, currency, timezone, custom paper size
+UC-84: Automatic scheduled data backup
+
+UC-85: Dashboard home screen — business snapshot on login
+UC-86: Dashboard widgets — current stock alerts, pending orders, overdue payments, expiring batches
+UC-87: Dashboard charts — stock levels by category, monthly revenue vs expenses, cash flow trend
+UC-88: Quick action shortcuts from dashboard (e.g. New Sales Order, Record Payment, Check Stock)
+
+UC-89: Company/organisation profile setup on first launch (name, address, logo, currency, timezone)
+UC-90: Password reset — forgot password flow via email
+UC-91: Notification preferences — admin can toggle which alerts are active and how they are delivered
+UC-92: Soft delete / archive for customers, suppliers, and orders (recoverable, not permanent)
+UC-93: Global search — search across products, customers, suppliers, and orders from one bar
+UC-94: Filter and sort across all list views (by date, status, category, amount)
+UC-95: Admin activity feed — recent actions across all users visible to admin in one view
