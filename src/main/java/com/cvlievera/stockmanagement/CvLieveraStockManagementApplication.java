@@ -2,12 +2,12 @@ package com.cvlievera.stockmanagement;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
+import org.springframework.scheduling.annotation.EnableAsync;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
-@SpringBootApplication(
-        exclude = { DataSourceAutoConfiguration.class },
-        scanBasePackages = { "com.cvlievera.stockmanagement" }
-)
+@EnableAsync
+@EnableScheduling
+@SpringBootApplication(scanBasePackages = { "com.cvlievera.stockmanagement" })
 public class CvLieveraStockManagementApplication {
 
     public static void main(String[] args) {

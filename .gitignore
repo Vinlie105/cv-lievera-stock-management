@@ -31,3 +31,11 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Local config (credentials — never commit) ###
+src/main/resources/application-local.properties
+.env
+
+### Deployment ###
+backups/
+*.tgz
