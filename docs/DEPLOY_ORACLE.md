@@ -47,7 +47,43 @@ exit   # log in again so the docker group applies
 
 ## 4. Put the code on the server
 
-From your **Windows PC** (PowerShell), without needing GitHub:
+Pick **Option A** (recommended: updates become a `git pull`) or **Option B** (no GitHub involved).
+
+### Option A - clone from GitHub with a read-only deploy key
+
+A deploy key is an SSH key that belongs to the *repository*, not to your GitHub account, and is read-only. If the server is ever compromised, the attacker can read this one repo but cannot push code or touch your other repos. Do **not** copy your personal GitHub credentials to the VM.
+
+1. On the VM, create a key just for this repo (no passphrase, so `git pull` works unattended):
+
+   ```bash
+   ssh-keygen -t ed25519 -f ~/.ssh/cvl_deploy -N "" -C "cvl-oracle-deploy"
+   cat ~/.ssh/cvl_deploy.pub        # copy this whole line
+   ```
+
+2. On GitHub: repo **Settings > Deploy keys > Add deploy key**. Title `oracle-vm`, paste the line, **leave "Allow write access" unchecked**, save.
+
+3. Tell SSH to use that key for GitHub, trust GitHub's host, and clone:
+
+   ```bash
+   printf 'Host github.com\n  HostName github.com\n  User git\n  IdentityFile ~/.ssh/cvl_deploy\n  IdentitiesOnly yes\n' >> ~/.ssh/config
+   chmod 600 ~/.ssh/config ~/.ssh/cvl_deploy
+
+   ssh -T git@github.com            # first time: check the fingerprint on screen against
+                                    # https://docs.github.com/authentication/keeping-your-account-and-data-secure/githubs-ssh-key-fingerprints
+                                    # then type "yes". Expect: "Hi <user>/<repo>! You've successfully authenticated"
+
+   git clone git@github.com:Vinlie105/cv-lievera-stock-management.git
+   cd cv-lievera-stock-management
+   chmod +x scripts/*.sh mvnw
+   ```
+
+   Keep the repository **private** if you can; with a deploy key, private repos clone fine.
+
+The `.env` file is not in git, so it is created on the server in step 5 and survives every `git pull`.
+
+### Option B - copy files from your PC (no GitHub)
+
+From your **Windows PC** (PowerShell):
 
 ```powershell
 cd D:\myProjects
@@ -103,11 +139,17 @@ Backups are AES-256 encrypted, kept 14 days in `backups/`. The disk of the same 
 
 ## 8. Updating the app
 
-Repeat step 4 (new tarball, keep your existing `.env` and `backups/`), then:
+Take a backup first (`./scripts/backup.sh`), then:
 
 ```bash
+# Option A (git):
+git pull
+# Option B (tarball): repeat step 4's copy, keeping your existing .env and backups/
+
 docker compose up -d --build
 ```
+
+**Rotating or revoking the deploy key:** delete it under repo Settings > Deploy keys, then repeat the key steps above with a new one. Do this if the VM is ever rebuilt or you suspect it was accessed.
 
 Database migrations (Flyway) run automatically on start.
 
