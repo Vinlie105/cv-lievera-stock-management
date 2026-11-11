@@ -1,0 +1,6 @@
+{$DOMAIN} {
+	encode gzip
+	reverse_proxy app:8080
+	# Caddy obtains and renews the Let's Encrypt certificate automatically.
+	# The app itself sets HSTS, CSP and the other security headers.
+}

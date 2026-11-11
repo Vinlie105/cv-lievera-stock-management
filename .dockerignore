@@ -1,0 +1,9 @@
+.git
+.idea
+.vscode
+target
+*.docx
+HELP.md
+.env
+backups
+src/main/resources/application-local.properties
